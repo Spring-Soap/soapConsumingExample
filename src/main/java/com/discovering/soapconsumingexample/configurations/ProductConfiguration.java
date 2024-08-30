@@ -10,6 +10,7 @@ import org.springframework.ws.client.core.WebServiceTemplate;
 public class ProductConfiguration
 {
 
+    // This bean responsible on marshalling and unmarshalling XML to Java objects
     @Bean
     public Jaxb2Marshaller marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
@@ -28,6 +29,8 @@ public class ProductConfiguration
         return client;
     }
 
+
+    // This bean responsible on sending and receiving the request
     @Bean
     public WebServiceTemplate webServiceTemplate(Jaxb2Marshaller marshaller) {
         WebServiceTemplate  w = new WebServiceTemplate();
