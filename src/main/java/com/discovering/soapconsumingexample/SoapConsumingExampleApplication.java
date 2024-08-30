@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class SoapConsumingExampleApplication {
 
+
     public static void main(String[] args) {
         SpringApplication.run(SoapConsumingExampleApplication.class, args);
     }
@@ -18,7 +19,7 @@ public class SoapConsumingExampleApplication {
     CommandLineRunner lookup(ProductClient productClient) {
         return _ -> {
             try {
-                GetProductResponse response = productClient.getProduct("sss");
+                GetProductResponse response = productClient.getProduct("Apple");
                 System.out.println(response.getProduct().getId());
                 System.out.println(response.getProduct().getName());
                 System.out.println(response.getProduct().getPrice());

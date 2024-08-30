@@ -1,9 +1,10 @@
 package com.discovering.soapconsumingexample.configurations;
 
-import com.discovering.soapconsumingexample.clients.ProductClient;
+import com.discovering.soapconsumingexample.clients.impl.ProductClientFirst;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
+import org.springframework.ws.client.core.WebServiceTemplate;
 
 @Configuration
 public class ProductConfiguration
@@ -19,11 +20,20 @@ public class ProductConfiguration
     }
 
     @Bean
-    public ProductClient productClient(Jaxb2Marshaller marshaller) {
-        ProductClient client = new ProductClient();
+    public ProductClientFirst productClient(Jaxb2Marshaller marshaller) {
+        ProductClientFirst client = new ProductClientFirst();
         client.setDefaultUri("http://localhost:8080/ws");
         client.setMarshaller(marshaller);
         client.setUnmarshaller(marshaller);
         return client;
+    }
+
+    @Bean
+    public WebServiceTemplate webServiceTemplate(Jaxb2Marshaller marshaller) {
+        WebServiceTemplate  w = new WebServiceTemplate();
+        w.setDefaultUri("http://localhost:8080/ws");
+        w.setMarshaller(marshaller);
+        w.setUnmarshaller(marshaller);
+        return w;
     }
 }
