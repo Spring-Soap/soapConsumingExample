@@ -19,7 +19,7 @@ public class ProductConfiguration
     }
 
     @Bean
-    public ProductClient countryClient(Jaxb2Marshaller marshaller) {
+    public ProductClient productClient(Jaxb2Marshaller marshaller) {
         ProductClient client = new ProductClient();
         client.setDefaultUri("http://localhost:8080/ws");
         client.setMarshaller(marshaller);
